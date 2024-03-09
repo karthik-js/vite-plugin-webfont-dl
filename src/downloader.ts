@@ -28,6 +28,7 @@ export class Downloader {
 				family: 4,
 			}),
 		});
+		this.axios.defaults.headers.common["Accept-Encoding"] = "gzip";
 	}
 
 	public async download(url: string, responseType?: ResponseType, tries = 1): Promise<AxiosResponse> {
