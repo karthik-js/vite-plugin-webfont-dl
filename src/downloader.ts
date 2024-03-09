@@ -28,7 +28,6 @@ export class Downloader {
 				family: 4,
 			}),
 		});
-		this.axios.defaults.headers.common["Accept-Encoding"] = "gzip";
 	}
 
 	public async download(url: string, responseType?: ResponseType, tries = 1): Promise<AxiosResponse> {
@@ -63,9 +62,10 @@ export class Downloader {
 	private toRequest(url: string, responseType?: ResponseType) {
 		return this.axios.get(url, {
 			headers: {
-				'User-Agent': this.userAgentWoff2,
+				"User-Agent": this.userAgentWoff2,
+				"Accept-Encoding": "gzip",
 			},
-			responseType: responseType ?? 'arraybuffer',
+			responseType: responseType ?? "arraybuffer",
 		});
 	}
 
